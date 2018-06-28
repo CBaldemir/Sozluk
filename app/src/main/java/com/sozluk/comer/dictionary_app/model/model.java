@@ -10,7 +10,34 @@ import io.realm.annotations.PrimaryKey;
  */
 public class model extends RealmObject {
 
+    public model(String dialogspinner, String dialogspinner2, String tr_text,String en_text) {
+        this.dialogspinner = dialogspinner;
+        this.dialogspinner2 = dialogspinner2;
+        this.tr_text = tr_text;
+        this.en_text = en_text;
 
+    }
+    public  model()
+    {}
+
+    public String getDialogspinner() {
+        return dialogspinner;
+    }
+
+    public void setDialogspinner(String dialogspinner) {
+        this.dialogspinner = dialogspinner;
+    }
+
+    public String getDialogspinner2() {
+        return dialogspinner2;
+    }
+
+    public void setDialogspinner2(String dialogspinner2) {
+        this.dialogspinner2 = dialogspinner2;
+    }
+
+    private String dialogspinner;
+    private String dialogspinner2;
     private String tr_text;
     private String en_text;
 

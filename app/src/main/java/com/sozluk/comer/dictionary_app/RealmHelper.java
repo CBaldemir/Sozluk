@@ -44,7 +44,7 @@ public void save(final model models)
 
         for (model s:models)
         {
-            veriadaptoru.add(s.getEn_text()+ " " +s.getTr_text());
+            veriadaptoru.add(s.getDialogspinner() + " " +s.getTr_text() + " " + s.getDialogspinner2() + " " + s.getEn_text());
         }
         return veriadaptoru;
     }

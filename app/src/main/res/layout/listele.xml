@@ -6,4 +6,4 @@
     android:textAppearance="?android:attr/textAppearanceListItemSmall"
     android:textColor="@color/colorPrimaryDark"
     android:gravity="center_vertical"
-     />
+    />
