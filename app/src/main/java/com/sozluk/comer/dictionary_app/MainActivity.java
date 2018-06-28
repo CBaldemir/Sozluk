@@ -1,6 +1,7 @@
 package com.sozluk.comer.dictionary_app;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -82,6 +83,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                     models.setEn_text(subdiaog2.getText().toString().toLowerCase());
                                     realm.commitTransaction();
                                     Toast.makeText(getApplication(), "Kayıt edildi",Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(MainActivity.this,MainActivity.class);
+                                    startActivity(intent);
                                     //KayitEkle(trEditText.getText().toString(),enEditText.getText().toString());
                                 }
                                 catch (Exception e)
