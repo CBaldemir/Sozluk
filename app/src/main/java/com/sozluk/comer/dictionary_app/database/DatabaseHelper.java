@@ -1,4 +1,4 @@
-package com.sozluk.comer.dictionary_app;
+package com.sozluk.comer.dictionary_app.database;
 
 import android.content.Context;
 import android.database.SQLException;
@@ -6,10 +6,16 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.sozluk.comer.dictionary_app.model;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 /**
  * Created by comer on 20.07.2017.
@@ -102,4 +108,60 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (sqliteDatabase != null)
             sqliteDatabase.close();
         super.close();
-    }}
+    }
+
+    /**
+     * Created by comer on 21.07.2017.
+     */
+    public static class RealmHelper {
+    Realm realm;
+    public RealmHelper(Realm realm)
+    {
+        this.realm=realm;
+    }
+
+    //Write
+    public void save(final model models)
+    {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                model m=realm.copyToRealm(models);
+
+            }
+
+
+
+
+        });
+
+    }
+
+    //Read
+        public ArrayList<String> liste()
+        {
+            ArrayList<String>veriadaptoru=new ArrayList<>();
+            RealmResults<model> models=realm.where(model.class).findAll();
+
+            for (model s:models)
+            {
+                veriadaptoru.add(s.getDialogspinner() + " " +s.getTr_text() + " " + s.getDialogspinner2() + " " + s.getEn_text());
+            }
+            return veriadaptoru;
+        }
+
+        public boolean checkUser(String email) {
+
+            RealmResults<model> realmObjects = realm.where(model.class).findAll();
+            for (model myRealmObject : realmObjects) {
+                if (email.equals(myRealmObject.getEn_text()))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+    }
+}
